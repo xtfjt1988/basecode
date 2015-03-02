@@ -513,3 +513,4 @@ class UploadFile {//类定义开始
         return $this->error;
     }
 }
+?>
