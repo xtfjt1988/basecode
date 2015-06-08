@@ -1,0 +1,92 @@
+﻿//获取每一个汉字的全拼
+    function getPinAllYin($string) {
+        global $pinyin_table;
+        $flow = "";
+        $string = iconv("utf-8", "gbk", $string);
+        for ($i = 0; $i < strlen($string); $i++) {
+            $string[$i] = trim($string[$i]);
+            if (ord($string[$i]) >= 0x81 and ord($string[$i]) <= 0xfe) {
+                $h = ord($string[$i]);
+                if (isset($string[$i + 1])) {
+                    $i++;
+                    $l = ord($string[$i]);
+                    if (isset($pinyin_table[$h][$l])) {
+                        $flow.=$pinyin_table[$h][$l][0];
+                    }
+                } else {
+                    $flow.=ord($string[$i]);
+                }
+            } else {
+
+                if (ord($string[$i]) >= 65 && ord($string[$i]) <= 122) {//杩樺師瀛楁瘝
+					$flow.=ord($string[$i]);
+                } else {
+					$flow.=$string[$i];
+                }
+            }
+        }
+
+        return $flow;
+    }
+
+//获取每一个汉字的首字母
+    function getPinYin($string) {
+        global $pinyin_table;
+        $flow = "";
+        $string = iconv("utf-8", "gbk", $string);
+        for ($i = 0; $i < strlen($string); $i++) {
+            $string[$i] = trim($string[$i]);
+            if (ord($string[$i]) >= 0x81 and ord($string[$i]) <= 0xfe) {
+                $h = ord($string[$i]);
+                if (isset($string[$i + 1])) {
+                    $i++;
+                    $l = ord($string[$i]);
+                    if (isset($pinyin_table[$h][$l])) {
+                        $flow.=substr($pinyin_table[$h][$l][0], 0, 1);
+                    }
+                } else {
+                    $flow.=substr(ord($string[$i]), 0, 1);
+                }
+            } else {
+
+                if (ord($string[$i]) >= 65 && ord($string[$i]) <= 122) {//杩樺師瀛楁瘝
+                    $flow.=substr($string[$i], 0, 1);
+                } else {
+                    $flow.=substr($string[$i], 0, 1);
+                }
+            }
+        }
+
+        return $flow;
+    }
+    
+	//获取第一个汉字的首字母
+    function getSzm($string) {
+        global $pinyin_table;
+        $flow = "";
+        $string = iconv("utf-8", "gbk", $string);
+        for ($i = 0; $i < 1; $i++) {
+            $string[$i] = trim($string[$i]);
+            if (ord($string[$i]) >= 0x81 and ord($string[$i]) <= 0xfe) {
+                $h = ord($string[$i]);
+                if (isset($string[$i + 1])) {
+                    $i++;
+                    $l = ord($string[$i]);
+                    if (isset($pinyin_table[$h][$l])) {
+                        $flow.=substr($pinyin_table[$h][$l][0], 0, 1);
+                    }
+                } else {
+                    $flow.=substr(ord($string[$i]), 0, 1);
+                }
+            } else {
+
+                if (ord($string[$i]) >= 65 && ord($string[$i]) <= 122) {//杩樺師瀛楁瘝
+                    $flow.=substr($string[$i], 0, 1);
+                } else {
+                    $flow.=substr($string[$i], 0, 1);
+                }
+            }
+        }
+
+        return $flow;
+    }
