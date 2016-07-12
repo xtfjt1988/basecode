@@ -3,7 +3,7 @@
 //
 // $Id: sphinxapi.php 2055 2009-11-06 23:09:58Z shodan $
 //
-
+// 测试git提交代码
 //
 // Copyright (c) 2001-2008, Andrew Aksyonoff. All rights reserved.
 //
